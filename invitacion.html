@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Conmemorativo Juan Luis Vigil</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+        
+        body {
+            font-family: 'Libre Baskerville', serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #000;
+        }
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .form-container {
+            margin-top: 20px;
+        }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px;
+            background: #000;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+        }
+        img {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Evento Conmemorativo de Juan Luis Vigil</h1>
+        <p><strong>Fecha:</strong> 18 de abril de 2025</p>
+        <p><strong>Lugar:</strong> Real Club Astur de Regatas</p>
+        <p><strong>Hora:</strong> 19:00 horas</p>
+        
+        <h2>Tiempo restante</h2>
+        <div class="countdown" id="countdown"></div>
+        
+        <h2>Solicitar adaptaciones especiales</h2>
+        <div class="form-container">
+            <p>Si necesitas alguna adaptación especial para asistir al evento, por favor, completa el siguiente formulario:</p>
+            <a href="https://forms.gle/BkNZoQ7N2p1GKYFx6" target="_blank">Ir al formulario</a>
+        </div>
+    </div>
+    
+    <script>
+        function actualizarCuentaRegresiva() {
+            const fechaEvento = new Date("April 18, 2025 19:00:00").getTime();
+            const ahora = new Date().getTime();
+            const diferencia = fechaEvento - ahora;
+
+            const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+            if (diferencia < 0) {
+                document.getElementById("countdown").innerHTML = "El evento ha comenzado";
+            }
+        }
+        setInterval(actualizarCuentaRegresiva, 1000);
+    </script>
+</body>
+</html>
